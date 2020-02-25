@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,8 @@ SECRET_KEY = '^xopuh$a)hoq)=dvnfm(wwu0g7+&zt!0%2d^$svcqrv#1vss7v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-bdcb3afb-babd-4380-8527-3e4e67c7fd26.ws-eu01.gitpod.io']
+ALLOWED_HOSTS = ['https://8000-bdcb3afb-babd-4380-8527-3e4e67c7fd26.ws-eu01.gitpod.io',
+                 'localhost']
 
 
 # Application definition
@@ -74,13 +77,14 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
+DATABASES = {'default': dj_database_url.parse("postgres://iwwdrurdzmjloj:9528ff81b6b8f09da4bdb349f9dbb86f74b0bac58e59f05e1e99a4eeed51e05e@ec2-54-195-247-108.eu-west-1.compute.amazonaws.com:5432/db6pvod50he2fu")}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
